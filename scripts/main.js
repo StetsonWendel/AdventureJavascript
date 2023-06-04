@@ -1,9 +1,10 @@
-// Story data
+// Story Stuff.
 const story = [
   {
     id: 1,
     scene: "You find yourself standing at the entrance of a mysterious cave. What do you do?",
-    choices: [
+    choices: 
+    [
       { text: "Enter the cave", next: 2 },
       { text: "Turn back and leave", next: 3 },
     ],
@@ -11,7 +12,8 @@ const story = [
   {
     id: 2,
     scene: "As you enter the dark cave, you see two paths ahead. Which path do you choose?",
-    choices: [
+    choices: 
+    [
       { text: "Take the left path", next: 4 },
       { text: "Take the right path", next: 5 },
     ],
@@ -19,7 +21,8 @@ const story = [
   {
     id: 3,
     scene: "You decide to turn back and leave. As you step away from the cave, you hear a mysterious voice calling you. What do you do?",
-    choices: [
+    choices: 
+    [
       { text: "Ignore the voice and leave", next: 6 },
       { text: "Investigate the voice", next: 7 },
     ],
@@ -27,7 +30,8 @@ const story = [
   {
     id: 4,
     scene: "You take the left path and encounter a treacherous river blocking your way. What do you do?",
-    choices: [
+    choices: 
+    [
       { text: "Swim across the river", next: 8 },
       { text: "Look for a bridge or another way across", next: 9 },
     ],
@@ -35,7 +39,8 @@ const story = [
   {
     id: 5,
     scene: "You take the right path and come across a chest guarded by a fierce dragon. What do you do?",
-    choices: [
+    choices: 
+    [
       { text: "Fight the dragon", next: 10 },
       { text: "Try to sneak past the dragon", next: 11 },
     ],
@@ -68,7 +73,8 @@ const story = [
   {
     id: 11,
     scene: "You try to sneak past the dragon, but it notices you and attacks. As you dodge its fiery breath, you notice a hidden passage behind the dragon. What do you do?",
-    choices: [
+    choices: 
+    [
       { text: "Continue fighting the dragon", next: 10 },
       { text: "Quickly dash into the hidden passage", next: 12 },
     ],
@@ -80,15 +86,15 @@ const story = [
   },
 ];
   
-  // Game state
+  // Game Scene.
   let currentScene = null;
   
-  // DOM elements
+  // Elements.
   const sceneElement = document.getElementById("scene");
   const choicesElement = document.getElementById("choices");
   const startButton = document.getElementById("start-btn");
   
-  // Function to start the game
+  // Function to start the game.
   function startGame() 
   {
     console.log("test")
@@ -98,34 +104,40 @@ const story = [
     startButton.style.display = "none";
   }
   
-  // Function to render the current scene
-  function renderScene() {
+  // Function to render the current scene.
+  function renderScene()
+  {
     sceneElement.innerText = currentScene.scene;
   }
   
-  // Function to render the available choices
-  function renderChoices() {
+  // Function to render the available choices.
+  function renderChoices() 
+  {
     choicesElement.innerHTML = "";
-    currentScene.choices.forEach((choice) => {
+    currentScene.choices.forEach((choice) => 
+    {
       const button = document.createElement("button");
       button.innerText = choice.text;
-      button.addEventListener("click", () => {
+      button.addEventListener("click", () => 
+      {
         navigate(choice.next);
       });
       choicesElement.appendChild(button);
     });
   }
   
-  // Function to navigate to the next scene
-  function navigate(sceneId) {
+  // Function to navigate to the next scene.
+  function navigate(sceneId) 
+  {
     const nextScene = story.find((scene) => scene.id === sceneId);
-    if (nextScene) {
+    if (nextScene) 
+    {
       currentScene = nextScene;
       renderScene();
       renderChoices();
     }
   }
   
-  // Event listener for start button
+  // Start button.
   startButton.addEventListener("click", startGame);
   
